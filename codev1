@@ -1,2 +1,63 @@
-#include <MeMCore.h>
+#include "MeMCore.h"
+#include "Wire.h"
 
+MeDCMotor motor1(PORT_1);
+
+MeDCMotor motor2(PORT_2);
+
+MeColorSensor colorsensor(PORT_3);
+
+MeLineFollower lineFinder(PORT_6);
+
+MeUltrasonicSensor ultraSensor(PORT_7);
+
+uint8_t colorresult;
+
+uint8_t motorSpeed = 100;
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  int sensorState = lineFinder.readSensors();
+  colorresult = colorsensor.Returnresult();
+
+  if(sensorState == S1_OUT_S2_OUT){
+    motor1.run(motorSpeed); 
+    motor2.run(motorSpeed);
+  }else if(sensorState == S1_IN_S2_IN){
+    switch(colorresult)
+    {
+      case BLACK:
+      
+      break;
+      case BLUE:
+
+      motor
+      break;
+      case YELLOW:
+      Serial.print("YELLOW");
+      break;
+      case GREEN:
+      Serial.print("GREEN");
+      break;
+      case RED:
+      Serial.print("RED");
+      motor1.run(motorspeed);
+      motor2.run(-motorSpeed);
+      break;
+      case WHITE:
+      Serial.print("WHITE");
+      break;
+      case PURPLE:
+      Serial.print("PURPLE");
+      break;
+      default:
+      break;    
+     }
+  }
+  
+}
