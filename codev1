@@ -18,6 +18,9 @@ uint8_t motorSpeed = 100;
 void setup()
 {
   Serial.begin(9600);
+  
+  //pin definition
+  pinMode(A1,INPUT);
 }
 
 void loop()
